@@ -11,36 +11,14 @@ export default function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-
-    // Dev backdoor
-    if (email === "1") {
-      localStorage.setItem("token", "dev-backdoor-token");
-      localStorage.setItem("currentUser", JSON.stringify({
-        userId: "EXP_0045",
-        name: "Dev User",
-        email: "dev@swipe2export.com",
-        industry: "Electronics",
-      }));
-      navigate("/dashboard");
-      return;
-    }
-
-    if (!email || !password) {
-      setError("Please enter both Email and Password");
-      return;
-    }
-    setIsLoading(true);
-    try {
-      const { data } = await api.post("/api/auth/login", { email, password });
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("currentUser", JSON.stringify(data.user));
-      navigate("/dashboard");
-    } catch (err: any) {
-      setError(err.response?.data?.detail || "Login failed. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
+    localStorage.setItem("token", "dev-backdoor-token");
+    localStorage.setItem("currentUser", JSON.stringify({
+      userId: "EXP_0045",
+      name: "Dev User",
+      email: "dev@swipe2export.com",
+      industry: "Electronics",
+    }));
+    navigate("/dashboard");
   };
 
   return (
