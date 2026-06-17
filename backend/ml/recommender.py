@@ -4,8 +4,8 @@ Hybrid Recommendation Engine for Swipe2Export.
 Architecture (identical to how Netflix and Spotify approach cold/warm states):
   1. Content-Based Filtering  — always available, used for cold-start users.
      Each importer is encoded as a feature vector derived from their trade profile.
-     Exporter preference is either inferred from their industry/profile or
-     built from the centroid of importers they previously liked.
+     Exporter preference is either inferred from their industry/profile or built
+     from the centroid of importers they previously liked.
 
   2. Collaborative Filtering via SVD — activated once the exporter has ≥3 swipes.
      We build a sparse exporter×importer rating matrix from all historical
@@ -35,15 +35,29 @@ from scipy.sparse import csr_matrix
 
 from ml.geo import get_geo_multiplier
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = os.path.dirname(BASE_DIR)
-# Try data/ first, then server/ (legacy), then env override
-_DEFAULT_DATA_DIR = (
-    os.path.join(PROJECT_ROOT, "data")
-    if os.path.exists(os.path.join(PROJECT_ROOT, "data", "importers_cleaned.csv"))
-    else os.path.join(PROJECT_ROOT, "server")
-)
-DATA_DIR = os.getenv("DATA_DIR", _DEFAULT_DATA_DIR)
+# Resolve paths relative to this file so they never depend on cwd
+_ML_DIR = os.path.dirname(os.path.abspath(__file__))
+_BACKEND_DIR = os.path.dirname(_ML_DIR)
+_PROJECT_ROOT = os.path.dirname(_BACKEND_DIR)
+
+# Auto-detect data directory: prefer data/, fall back to server/ (legacy layout)
+def _find_data_dir() -> str:
+    # 1. Explicit env var (must be absolute or resolvable from project root)
+    env = os.getenv("DATA_DIR")
+    if env:
+        p = env if os.path.isabs(env) else os.path.join(_PROJECT_ROOT, env)
+        if os.path.exists(os.path.join(p, "importers_cleaned.csv")):
+            return p
+    # 2. data/ at project root
+    p = os.path.join(_PROJECT_ROOT, "data")
+    if os.path.exists(os.path.join(p, "importers_cleaned.csv")):
+        return p
+    # 3. server/ at project root (original layout)
+    p = os.path.join(_PROJECT_ROOT, "server")
+    if os.path.exists(os.path.join(p, "importers_cleaned.csv")):
+        return p
+    return os.path.join(_PROJECT_ROOT, "data")  # will raise a clear error on load
+
 
 NUMERIC_FEATURES = [
     'Tariff_News', 'Currency_Fluctuation', 'War_Event',
@@ -52,14 +66,13 @@ NUMERIC_FEATURES = [
     'Engagement_Spike', 'Good_Payment_History',
 ]
 
-N_FACTORS = 20  # latent dimensions for SVD
+N_FACTORS = 20  # latent SVD dimensions
 
 
 class HybridRecommender:
     def __init__(self):
         self.importers: pd.DataFrame = pd.DataFrame()
         self.exporters: pd.DataFrame = pd.DataFrame()
-        # interaction store: {exporter_id: {buyer_id: rating}}
         self._interactions: dict[str, dict[str, float]] = {}
         self._scaler = MinMaxScaler()
         self._importer_features: np.ndarray | None = None
@@ -70,20 +83,20 @@ class HybridRecommender:
     # ------------------------------------------------------------------ #
 
     def load_data(self):
-        imp_path = os.path.join(DATA_DIR, "importers_cleaned.csv")
-        exp_path = os.path.join(DATA_DIR, "exporters_cleaned.csv")
+        data_dir = _find_data_dir()
+        imp_path = os.path.join(data_dir, "importers_cleaned.csv")
+        exp_path = os.path.join(data_dir, "exporters_cleaned.csv")
         if not os.path.exists(imp_path):
             raise FileNotFoundError(
-                f"importers_cleaned.csv not found in {DATA_DIR}. "
-                "Set the DATA_DIR environment variable to the folder containing the CSV files."
+                f"importers_cleaned.csv not found in {data_dir}. "
+                "Set DATA_DIR env var to the folder containing the CSV files."
             )
         self.importers = pd.read_csv(imp_path)
         self.exporters = pd.read_csv(exp_path)
         self._build_importer_matrix()
-        print(f"Recommender loaded: {len(self.importers)} importers, {len(self.exporters)} exporters")
+        print(f"Recommender loaded: {len(self.importers)} importers, {len(self.exporters)} exporters from {data_dir}")
 
     def _build_importer_matrix(self):
-        """Pre-compute and scale the importer content feature matrix."""
         available = [c for c in NUMERIC_FEATURES if c in self.importers.columns]
         X = self.importers[available].fillna(0).values.astype(float)
         self._importer_features = self._scaler.fit_transform(X)
@@ -98,7 +111,6 @@ class HybridRecommender:
         self._interactions.setdefault(exporter_id, {})[buyer_id] = rating
 
     def seed_interactions(self, rows: list[dict]):
-        """Bulk-load historical interactions from the database at startup."""
         for r in rows:
             self.record_interaction(r["exporter_id"], r["buyer_id"], r["action"])
 
@@ -107,44 +119,27 @@ class HybridRecommender:
     # ------------------------------------------------------------------ #
 
     def _content_scores(self, exporter_id: str, exporter_row: pd.Series | None,
-                        candidate_mask: np.ndarray) -> np.ndarray:
-        """
-        Build a preference vector for the exporter and score candidates
-        via cosine similarity.  Two strategies:
-          - If the exporter has liked importers before → preference = centroid
-            of their liked importers' feature vectors.
-          - Otherwise → preference derived from exporter's own numeric profile.
-        """
+                        candidate_indices: np.ndarray) -> np.ndarray:
         liked_ids = {bid for bid, r in self._interactions.get(exporter_id, {}).items() if r > 0}
 
         if liked_ids:
-            liked_indices = [i for i, bid in enumerate(self._importer_ids) if bid in liked_ids]
-            if liked_indices:
-                pref_vec = self._importer_features[liked_indices].mean(axis=0, keepdims=True)
-            else:
-                pref_vec = self._cold_start_pref(exporter_row)
+            liked_idx = [i for i, bid in enumerate(self._importer_ids) if bid in liked_ids]
+            pref_vec = (self._importer_features[liked_idx].mean(axis=0, keepdims=True)
+                        if liked_idx else self._cold_start_pref(exporter_row))
         else:
             pref_vec = self._cold_start_pref(exporter_row)
 
-        candidate_features = self._importer_features[candidate_mask]
-        sims = cosine_similarity(pref_vec, candidate_features)[0]
-        # shift to [0, 1]
-        sims = (sims - sims.min()) / (sims.max() - sims.min() + 1e-9)
-        return sims
+        sims = cosine_similarity(pref_vec, self._importer_features[candidate_indices])[0]
+        mn, mx = sims.min(), sims.max()
+        return (sims - mn) / (mx - mn + 1e-9)
 
     def _cold_start_pref(self, exporter_row: pd.Series | None) -> np.ndarray:
-        """Create a preference vector from the exporter's own trade profile."""
         available = [c for c in NUMERIC_FEATURES if c in self.importers.columns]
-        # Map exporter columns to importer columns heuristically
         col_map = {
-            'Tariff_News': 'Tariff_Impact',
-            'Currency_Fluctuation': 'Currency_Shift',
-            'War_Event': 'War_Risk',
-            'Natural_Calamity': 'Natural_Calamity_Risk',
-            'StockMarket_Shock': 'StockMarket_Impact',
-            'Intent_Score': 'Intent_Score',
-            'Avg_Order_Tons': 'Quantity_Tons',
-            'Engagement_Spike': 'Intent_Score',
+            'Tariff_News': 'Tariff_Impact', 'Currency_Fluctuation': 'Currency_Shift',
+            'War_Event': 'War_Risk', 'Natural_Calamity': 'Natural_Calamity_Risk',
+            'StockMarket_Shock': 'StockMarket_Impact', 'Intent_Score': 'Intent_Score',
+            'Avg_Order_Tons': 'Quantity_Tons', 'Engagement_Spike': 'Intent_Score',
             'Good_Payment_History': 'Intent_Score',
         }
         vec = np.zeros(len(available), dtype=float)
@@ -153,19 +148,13 @@ class HybridRecommender:
                 exp_col = col_map.get(imp_col, imp_col)
                 if exp_col in exporter_row.index:
                     vec[i] = float(exporter_row[exp_col])
-        pref = self._scaler.transform([vec])
-        return pref
+        return self._scaler.transform([vec])
 
     # ------------------------------------------------------------------ #
     #  Collaborative filtering (SVD)                                        #
     # ------------------------------------------------------------------ #
 
-    def _cf_scores(self, exporter_id: str, candidate_mask: np.ndarray) -> np.ndarray | None:
-        """
-        Build a global exporter×importer rating matrix from all known interactions
-        and use truncated SVD to predict scores for the target exporter.
-        Returns None if there are too few interactions to be meaningful.
-        """
+    def _cf_scores(self, exporter_id: str, candidate_indices: np.ndarray) -> np.ndarray | None:
         all_exp_ids = list(self._interactions.keys())
         if len(all_exp_ids) < 2:
             return None
@@ -191,15 +180,16 @@ class HybridRecommender:
         R = csr_matrix((vals, (rows_i, cols_j)), shape=(n_exp, n_imp), dtype=float)
         R_dense = R.toarray()
 
-        # Subtract per-user mean (only over rated items)
         user_means = np.zeros(n_exp)
         for ei in range(n_exp):
             rated = R_dense[ei] != 0
             if rated.any():
                 user_means[ei] = R_dense[ei][rated].mean()
-        R_norm = R_dense - user_means[:, np.newaxis]
-        # Zero out unrated cells (mean subtraction only applies to rated)
-        R_norm[R_dense == 0] = 0.0
+
+        R_norm = R_dense.copy()
+        for ei in range(n_exp):
+            mask = R_dense[ei] != 0
+            R_norm[ei][mask] -= user_means[ei]
 
         k = min(N_FACTORS, n_exp - 1, n_imp - 1)
         if k < 1:
@@ -213,20 +203,11 @@ class HybridRecommender:
         R_pred = U @ np.diag(sigma) @ Vt + user_means[:, np.newaxis]
 
         target_ei = exp_idx.get(exporter_id)
-        if target_ei is None:
-            # New exporter not in matrix — use mean of all predicted scores
-            pred_row = R_pred.mean(axis=0)
-        else:
-            pred_row = R_pred[target_ei]
+        pred_row = R_pred[target_ei] if target_ei is not None else R_pred.mean(axis=0)
 
-        candidate_scores = pred_row[candidate_mask]
-        # Normalise to [0, 1]
+        candidate_scores = pred_row[candidate_indices]
         mn, mx = candidate_scores.min(), candidate_scores.max()
-        if mx > mn:
-            candidate_scores = (candidate_scores - mn) / (mx - mn)
-        else:
-            candidate_scores = np.zeros_like(candidate_scores)
-        return candidate_scores
+        return (candidate_scores - mn) / (mx - mn + 1e-9)
 
     # ------------------------------------------------------------------ #
     #  Main recommendation entry point                                      #
@@ -242,50 +223,36 @@ class HybridRecommender:
         if self.importers.empty:
             return []
 
-        # --- Filter candidates by industry ---
+        # Bug fix: case-insensitive industry match (user signs up "electronics", CSV has "Electronics")
         mask = self.importers['Industry'].str.lower() == industry.lower()
         candidate_indices = np.where(mask.values)[0]
 
         if len(candidate_indices) == 0:
-            # Fallback: return all importers (no industry match)
+            # Fallback: all importers (no industry match found in CSV)
             candidate_indices = np.arange(len(self.importers))
 
-        # --- Already-seen importers (exclude from results) ---
+        # Exclude already-seen importers, but show all if everything's been seen
         seen = set(self._interactions.get(exporter_id, {}).keys())
-        candidate_indices = np.array(
-            [i for i in candidate_indices if self._importer_ids[i] not in seen]
-        )
-        if len(candidate_indices) == 0:
-            candidate_indices = np.where(mask.values)[0]  # show all if all seen
+        unseen = np.array([i for i in candidate_indices if self._importer_ids[i] not in seen])
+        candidate_indices = unseen if len(unseen) > 0 else candidate_indices
 
-        # --- Compute content-based scores ---
-        cb = self._content_scores(exporter_id, exporter_row, candidate_indices)
-
-        # --- Determine alpha (cold-start blend) ---
+        # Cold-start blend factor
         n_interactions = len(self._interactions.get(exporter_id, {}))
         alpha = min(1.0, n_interactions / 10.0)
 
-        # --- Compute CF scores if enough data ---
+        cb = self._content_scores(exporter_id, exporter_row, candidate_indices)
         cf = self._cf_scores(exporter_id, candidate_indices) if alpha > 0 else None
+        raw_scores = (1.0 - alpha) * cb + alpha * cf if cf is not None else cb
 
-        if cf is not None:
-            raw_scores = (1.0 - alpha) * cb + alpha * cf
-        else:
-            raw_scores = cb
+        # Rank descending and convert to percentile scores
+        ranks = raw_scores.argsort()[::-1]
+        match_scores_pct = np.linspace(100, 60, len(ranks))
 
-        # --- Convert to 0-100 match score ---
-        ranks = raw_scores.argsort()[::-1]  # descending
-        match_scores_pct = np.linspace(100, 60, len(ranks))  # spread 60–100
-
-        # --- Confidence: how far the score stands out (z-score magnitude) ---
         mean, std = raw_scores.mean(), raw_scores.std()
         z = np.abs((raw_scores - mean) / (std + 1e-9))
         conf_norm = (z - z.min()) / (z.max() - z.min() + 1e-9)
 
-        # --- Build result list ---
         results = []
-        candidates_subset = self.importers.iloc[candidate_indices]
-
         for rank_pos, local_idx in enumerate(ranks[:top_n]):
             global_idx = candidate_indices[local_idx]
             row = self.importers.iloc[global_idx]
@@ -293,14 +260,10 @@ class HybridRecommender:
             country = str(row.get('Country', ''))
             geo_mult, geo_label = get_geo_multiplier(country)
 
-            base_score = match_scores_pct[rank_pos]
-            final_score = min(100.0, base_score * geo_mult)
-            confidence = float(conf_norm[local_idx]) * 100
-
             results.append({
                 "buyer_id": buyer_id,
-                "match_score": float(round(final_score, 1)),
-                "confidence": float(round(confidence, 1)),
+                "match_score": float(round(min(100.0, match_scores_pct[rank_pos] * geo_mult), 1)),
+                "confidence": float(round(float(conf_norm[local_idx]) * 100, 1)),
                 "geo_label": geo_label,
                 "industry": str(row.get('Industry', '')),
                 "country": country,
@@ -318,10 +281,7 @@ class HybridRecommender:
         if self.exporters.empty:
             return None
         match = self.exporters[self.exporters['Exporter_ID'] == exporter_id]
-        if not match.empty:
-            return match.iloc[0]
-        return None
+        return match.iloc[0] if not match.empty else None
 
 
-# Singleton — loaded once at FastAPI startup
 recommender = HybridRecommender()

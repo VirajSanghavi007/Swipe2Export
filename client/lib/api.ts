@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "",
-});
+// In production FastAPI serves the frontend from the same origin,
+// so all /api/* calls go to the same server — no base URL needed.
+// In dev, Vite proxies /api/* to localhost:8000 (see vite.config.ts).
+const api = axios.create();
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");

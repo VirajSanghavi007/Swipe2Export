@@ -9,6 +9,16 @@ router = APIRouter()
 
 GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
 
+def _gemini_headers_and_url(api_key: str) -> tuple[dict, str]:
+    """
+    Auth keys (new format, starts with 'AQ.') use the x-goog-api-key header.
+    Standard keys (starts with 'AIza') are sent as a ?key= query param.
+    Both formats are supported so users can migrate gradually.
+    """
+    if api_key.startswith("AQ."):
+        return {"x-goog-api-key": api_key, "Content-Type": "application/json"}, GEMINI_API_URL
+    return {"Content-Type": "application/json"}, f"{GEMINI_API_URL}?key={api_key}"
+
 SYSTEM_PROMPT = (
     "Your task is to evaluate a trade match score and give a brief, friendly analysis of "
     "why this importer was recommended to this exporter. Explain in layman terms — assume "
@@ -63,9 +73,10 @@ async def analyze(body: AnalyzeRequest):
         "contents": [{"parts": [{"text": user_prompt}]}],
     }
 
+    headers, url = _gemini_headers_and_url(api_key)
     async with httpx.AsyncClient(timeout=30) as client:
         try:
-            resp = await client.post(f"{GEMINI_API_URL}?key={api_key}", json=payload)
+            resp = await client.post(url, json=payload, headers=headers)
             resp.raise_for_status()
         except httpx.HTTPStatusError as e:
             detail = e.response.json().get("error", {}).get("message", str(e))
