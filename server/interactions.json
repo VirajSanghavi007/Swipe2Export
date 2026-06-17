@@ -1,0 +1,694 @@
+[
+  {
+    "exporter_id": "EXP_0169",
+    "buyer_id": "BUY_0667",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0667",
+      "match_score": 100,
+      "confidence": 95.38695563270028,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-22T03:22:05.390Z"
+  },
+  {
+    "exporter_id": "EXP_0169",
+    "buyer_id": "BUY_0961",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0961",
+      "match_score": 99.40119760479041,
+      "confidence": 67.15338798351243,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-22T03:22:07.469Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0996",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0996",
+      "match_score": 100,
+      "confidence": 93.80034568191753,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:13:26.027Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0930",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0930",
+      "match_score": 99.3975903614458,
+      "confidence": 76.05670533996917,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:13:27.527Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0438",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0438",
+      "match_score": 98.79518072289156,
+      "confidence": 74.46987642273686,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:13:28.290Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0744",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0744",
+      "match_score": 98.19277108433735,
+      "confidence": 49.164148598308834,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:13:58.705Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0228",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0228",
+      "match_score": 99.3975903614458,
+      "confidence": 72.0400488946532,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:14:02.151Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0054",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0054",
+      "match_score": 100,
+      "confidence": 77.80657169412063,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:18:13.329Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0810",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0810",
+      "match_score": 98.79518072289156,
+      "confidence": 69.84642285187338,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:18:17.445Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0414",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0414",
+      "match_score": 98.19277108433735,
+      "confidence": 63.929829238529265,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:18:18.945Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0534",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0534",
+      "match_score": 100,
+      "confidence": 79.9902274291315,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:27:03.422Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0060",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0060",
+      "match_score": 98.79518072289156,
+      "confidence": 75.07633090866757,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:27:07.886Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0588",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0588",
+      "match_score": 98.19277108433735,
+      "confidence": 72.96762174059948,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:27:12.457Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0126",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0126",
+      "match_score": 97.59036144578313,
+      "confidence": 51.16435385380852,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T18:27:13.193Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0012",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0012",
+      "match_score": 100,
+      "industry": "Chemicals",
+      "country": "Inverness, UK",
+      "status": "ranked"
+    },
+    "timestamp": "2026-03-10T18:27:19.619Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0318",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0318",
+      "match_score": 98.79518072289156,
+      "confidence": 58.67471252049066,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T19:10:51.593Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0084",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0084",
+      "match_score": 98.79518072289156,
+      "confidence": 69.2197723111488,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-10T19:17:56.086Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0954",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0954",
+      "match_score": 98.19277108433735,
+      "confidence": 59.211178994815384,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-11T03:16:23.490Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0018",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0018",
+      "match_score": 100,
+      "confidence": 81.53068431101717,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-11T03:47:38.854Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0432",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0432",
+      "match_score": 100,
+      "confidence": 79.91996101213523,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-11T03:47:42.883Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0120",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0120",
+      "match_score": 100,
+      "confidence": 86.07397870605318,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-11T03:55:35.846Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0564",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0564",
+      "match_score": 99.3975903614458,
+      "confidence": 84.6108794056791,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-11T03:55:37.191Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0684",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0684",
+      "match_score": 100,
+      "confidence": 80.1086873878788,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-11T03:59:25.842Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0696",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0696",
+      "match_score": 99.3975903614458,
+      "confidence": 74.2117155734793,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-11T03:59:27.043Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0834",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0834",
+      "match_score": 99.3975903614458,
+      "confidence": 91.82693721770976,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-03-11T04:10:56.771Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0036",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0036",
+      "match_score": 100,
+      "confidence": 91.14428077700212,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Saskatoon, Canada"
+    },
+    "timestamp": "2026-03-11T04:29:11.895Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0702",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0702",
+      "match_score": 98.19277108433735,
+      "confidence": 75.80556165065506,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Inverness, UK"
+    },
+    "timestamp": "2026-03-11T04:29:16.886Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0960",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0960",
+      "match_score": 99.3975903614458,
+      "confidence": 80.82306312637489,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Santos, Brazil"
+    },
+    "timestamp": "2026-03-11T04:43:57.367Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0630",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0630",
+      "match_score": 100,
+      "confidence": 83.05072430649085,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Geelong, Australia"
+    },
+    "timestamp": "2026-03-11T04:45:20.449Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0336",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0336",
+      "match_score": 97.59036144578313,
+      "confidence": 62.02628710567096,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Tampines, Singapore"
+    },
+    "timestamp": "2026-03-11T04:49:20.419Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0924",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0924",
+      "match_score": 96.98795180722891,
+      "confidence": 51.41572180893158,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Toowoomba, Australia"
+    },
+    "timestamp": "2026-03-11T04:49:22.128Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0360",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0360",
+      "match_score": 96.3855421686747,
+      "confidence": 57.29276717671482,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Savannah, USA"
+    },
+    "timestamp": "2026-03-11T04:49:24.235Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0348",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0348",
+      "match_score": 95.18072289156626,
+      "confidence": 52.81609426122499,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Nancy, France"
+    },
+    "timestamp": "2026-03-11T04:49:27.390Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0636",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0636",
+      "match_score": 100,
+      "industry": "Chemicals",
+      "country": "Hobart, Australia",
+      "status": "ranked"
+    },
+    "timestamp": "2026-03-11T04:51:41.354Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0168",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0168",
+      "match_score": 100,
+      "industry": "Chemicals",
+      "country": "Joinville, Brazil",
+      "status": "ranked"
+    },
+    "timestamp": "2026-03-11T04:51:42.841Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0048",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0048",
+      "match_score": 100,
+      "industry": "Chemicals",
+      "country": "Vitoria, Brazil",
+      "status": "ranked"
+    },
+    "timestamp": "2026-03-11T04:57:43.810Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0462",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0462",
+      "match_score": 100,
+      "industry": "Chemicals",
+      "country": "Ulm, Germany",
+      "status": "ranked"
+    },
+    "timestamp": "2026-03-11T04:57:45.585Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0324",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0324",
+      "match_score": 100,
+      "industry": "Chemicals",
+      "country": "Hakodate, Japan",
+      "status": "ranked"
+    },
+    "timestamp": "2026-03-11T04:57:47.155Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0876",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0876",
+      "match_score": 100,
+      "confidence": 88.05653392049315,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Geelong, Australia"
+    },
+    "timestamp": "2026-03-11T05:06:03.694Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0006",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0006",
+      "match_score": 100,
+      "industry": "Chemicals",
+      "country": "Erfurt, Germany",
+      "status": "ranked"
+    },
+    "timestamp": "2026-03-11T05:07:15.910Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0516",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0516",
+      "match_score": 100,
+      "industry": "Chemicals",
+      "country": "Erfurt, Germany",
+      "status": "ranked"
+    },
+    "timestamp": "2026-03-11T05:07:17.711Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0132",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0132",
+      "match_score": 98.79518072289156,
+      "confidence": 73.99373179203889,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Salem, USA"
+    },
+    "timestamp": "2026-03-11T05:11:19.203Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0264",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0264",
+      "match_score": 99.3975903614458,
+      "confidence": 85.64939587537847,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Tampines, Singapore"
+    },
+    "timestamp": "2026-03-11T05:21:48.205Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0078",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0078",
+      "match_score": 97.59036144578313,
+      "confidence": 63.165000058312515,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Mainz, Germany"
+    },
+    "timestamp": "2026-03-11T13:05:48.423Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0372",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0372",
+      "match_score": 96.3855421686747,
+      "confidence": 71.75507730595308,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Matsue, Japan"
+    },
+    "timestamp": "2026-03-11T13:06:02.081Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0798",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0798",
+      "match_score": 98.79518072289156,
+      "confidence": 75.78145445462137,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Kingston, Canada"
+    },
+    "timestamp": "2026-03-11T13:17:28.646Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0900",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0900",
+      "match_score": 94.57831325301204,
+      "confidence": 60.378341314506415,
+      "geo_label": "NEUTRAL",
+      "industry": "Chemicals",
+      "country": "Woodlands, Singapore"
+    },
+    "timestamp": "2026-03-11T13:33:57.918Z"
+  },
+  {
+    "exporter_id": "EXP_2002",
+    "buyer_id": "BUY_0603",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0603",
+      "match_score": 100,
+      "confidence": 82.7269398059325,
+      "geo_label": "NEUTRAL",
+      "industry": "Electronics",
+      "country": "Victoria, Canada"
+    },
+    "timestamp": "2026-03-25T04:00:00.543Z",
+    "createdAt": "2026-03-25T04:00:00.543Z"
+  },
+  {
+    "exporter_id": "EXP_2002",
+    "buyer_id": "BUY_0345",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0345",
+      "match_score": 99.40119760479041,
+      "confidence": 81.18586572996331,
+      "geo_label": "NEUTRAL",
+      "industry": "Electronics",
+      "country": "Matsue, Japan"
+    },
+    "timestamp": "2026-03-25T04:00:04.972Z",
+    "createdAt": "2026-03-25T04:00:04.972Z"
+  },
+  {
+    "exporter_id": "EXP_2002",
+    "buyer_id": "BUY_0999",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0999",
+      "match_score": 98.80239520958084,
+      "confidence": 75.9741645770353,
+      "geo_label": "NEUTRAL",
+      "industry": "Electronics",
+      "country": "Toowoomba, Australia"
+    },
+    "timestamp": "2026-03-25T04:00:10.226Z",
+    "createdAt": "2026-03-25T04:00:10.226Z"
+  },
+  {
+    "exporter_id": "EXP_2002",
+    "buyer_id": "BUY_0411",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0411",
+      "match_score": 98.20359281437125,
+      "confidence": 71.64332274486154,
+      "geo_label": "NEUTRAL",
+      "industry": "Electronics",
+      "country": "Norwich, UK"
+    },
+    "timestamp": "2026-03-25T04:00:13.681Z",
+    "createdAt": "2026-03-25T04:00:13.681Z"
+  },
+  {
+    "exporter_id": "EXP_2002",
+    "buyer_id": "BUY_0537",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0537",
+      "match_score": 97.60479041916167,
+      "confidence": 63.75008011358578,
+      "geo_label": "NEUTRAL",
+      "industry": "Electronics",
+      "country": "Kassel, Germany"
+    },
+    "timestamp": "2026-03-25T04:00:15.753Z",
+    "createdAt": "2026-03-25T04:00:15.753Z"
+  },
+  {
+    "exporter_id": "EXP_2002",
+    "buyer_id": "BUY_0177",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0177",
+      "match_score": 97.0059880239521,
+      "confidence": 59.605349222447224,
+      "geo_label": "NEUTRAL",
+      "industry": "Electronics",
+      "country": "Derry, UK"
+    },
+    "timestamp": "2026-03-25T04:00:17.608Z",
+    "createdAt": "2026-03-25T04:00:17.608Z"
+  }
+]

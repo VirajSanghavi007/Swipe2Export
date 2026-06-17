@@ -1,0 +1,18 @@
+[
+  {
+    "userId": "EXP_0169",
+    "name": "Atharv Salvi",
+    "email": "atharv.salvi22@gmail.com",
+    "password": "123456789",
+    "role": "exporter",
+    "industry": "machinery"
+  },
+  {
+    "userId": "EXP_2001",
+    "name": "SONAL",
+    "email": "SONAL@GMAIL.COM",
+    "password": "12345678",
+    "role": "exporter",
+    "industry": "electronics"
+  }
+]

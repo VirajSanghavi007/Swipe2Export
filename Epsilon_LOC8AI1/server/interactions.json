@@ -1,0 +1,223 @@
+[
+  {
+    "exporter_id": "EXP_0169",
+    "buyer_id": "BUY_0667",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0667",
+      "match_score": 100,
+      "confidence": 95.38695563270028,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-22T03:22:05.390Z"
+  },
+  {
+    "exporter_id": "EXP_0169",
+    "buyer_id": "BUY_0961",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0961",
+      "match_score": 99.40119760479041,
+      "confidence": 67.15338798351243,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-22T03:22:07.469Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0807",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0807",
+      "match_score": 100,
+      "industry": "Electronics",
+      "country": "Swansea, UK",
+      "status": "ranked"
+    },
+    "timestamp": "2026-02-27T04:09:01.207Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0015",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0015",
+      "match_score": 100,
+      "industry": "Electronics",
+      "country": "Rostock, Germany",
+      "status": "ranked"
+    },
+    "timestamp": "2026-02-27T04:09:02.314Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0747",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0747",
+      "match_score": 100,
+      "industry": "Electronics",
+      "country": "Swansea, UK",
+      "status": "ranked"
+    },
+    "timestamp": "2026-02-27T04:09:03.345Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0159",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0159",
+      "match_score": 100,
+      "industry": "Electronics",
+      "country": "Ajman, UAE",
+      "status": "ranked"
+    },
+    "timestamp": "2026-02-27T04:09:04.367Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0069",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0069",
+      "match_score": 100,
+      "industry": "Electronics",
+      "country": "Nagasaki, Japan",
+      "status": "ranked"
+    },
+    "timestamp": "2026-02-27T04:09:05.442Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0363",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0363",
+      "match_score": 100,
+      "confidence": 95.65529641011462,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:10:18.204Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0153",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0153",
+      "match_score": 99.40119760479041,
+      "confidence": 66.5141887928844,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:10:21.969Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0345",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0345",
+      "match_score": 98.80239520958084,
+      "confidence": 65.35648422601497,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:10:23.164Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0375",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0375",
+      "match_score": 98.20359281437125,
+      "confidence": 62.85268545046577,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:10:24.291Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0735",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0735",
+      "match_score": 97.60479041916167,
+      "confidence": 62.61066125943982,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:10:25.403Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0849",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0849",
+      "match_score": 100,
+      "confidence": 92.29635638007196,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:12:49.967Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0603",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0603",
+      "match_score": 99.40119760479041,
+      "confidence": 79.07045295658044,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:12:51.304Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0291",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0291",
+      "match_score": 98.20359281437125,
+      "confidence": 80.3543273366003,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:12:53.635Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0885",
+    "action": "pass",
+    "matchDetails": {
+      "buyer_id": "BUY_0885",
+      "match_score": 100,
+      "confidence": 81.56778792982817,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:13:21.620Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0099",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0099",
+      "match_score": 98.20359281437125,
+      "confidence": 69.16399188413781,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:13:25.542Z"
+  },
+  {
+    "exporter_id": "EXP_2001",
+    "buyer_id": "BUY_0567",
+    "action": "connect",
+    "matchDetails": {
+      "buyer_id": "BUY_0567",
+      "match_score": 99.40119760479041,
+      "confidence": 78.28105055780777,
+      "geo_label": "NEUTRAL"
+    },
+    "timestamp": "2026-02-27T04:29:22.018Z"
+  }
+]

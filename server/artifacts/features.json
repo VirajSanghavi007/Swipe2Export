@@ -1,0 +1,1 @@
+{"all_features": ["capacity_ratio", "intent_alignment", "engagement_score", "payment_score", "tariff_alignment", "currency_alignment", "war_alignment", "natural_alignment", "stock_alignment"], "risk_features": ["tariff_alignment", "currency_alignment", "war_alignment", "natural_alignment", "stock_alignment"], "sample_count": 4663}

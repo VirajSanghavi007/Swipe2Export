@@ -1,0 +1,24 @@
+[build]
+  command = "npm install && npm run build:client"
+  functions = "netlify/functions"
+  publish = "dist/spa"
+
+[build.environment]
+  NPM_FLAGS = "--legacy-peer-deps"
+  NODE_VERSION = "20"
+
+[functions]
+  external_node_modules = ["express", "mongoose", "mongodb", "bson", "@mongodb-js/saslprep"]
+  node_bundler = "esbuild"
+  included_files = ["node_modules/mongoose/**", "node_modules/mongodb/**", "node_modules/bson/**"]
+
+[[redirects]]
+  force = true
+  from = "/api/*"
+  status = 200
+  to = "/.netlify/functions/api/:splat"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

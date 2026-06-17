@@ -1,0 +1,33 @@
+[
+  {
+    "userId": "EXP_0169",
+    "name": "Atharv Salvi",
+    "email": "atharv.salvi22@gmail.com",
+    "password": "123456789",
+    "role": "exporter",
+    "industry": "machinery"
+  },
+  {
+    "userId": "EXP_2001",
+    "name": "sonal d",
+    "email": "sonal@gmail.com",
+    "password": "12345678",
+    "role": "exporter",
+    "industry": "chemicals",
+    "linkedin": "",
+    "phone": "+91 9967632402",
+    "contactEmail": "sonal@gmail.com"
+  },
+  {
+    "userId": "EXP_2002",
+    "name": "kavya",
+    "email": "kavya@gmail.com",
+    "password": "12345678",
+    "role": "exporter",
+    "industry": "electronics",
+    "linkedin": "",
+    "phone": "9876543210",
+    "contactEmail": "kavya@gmail.com",
+    "createdAt": "2026-03-25T03:59:34.735Z"
+  }
+]

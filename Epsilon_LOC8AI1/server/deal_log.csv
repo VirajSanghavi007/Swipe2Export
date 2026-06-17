@@ -1,0 +1,2 @@
+buyer_id,exporter_id,action,outcome,score,feature_vector
+B1,E1,pass,0,80.0,"[1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0]"
