@@ -12,6 +12,20 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    // Dev backdoor
+    if (email === "1") {
+      localStorage.setItem("token", "dev-backdoor-token");
+      localStorage.setItem("currentUser", JSON.stringify({
+        userId: "EXP_0045",
+        name: "Dev User",
+        email: "dev@swipe2export.com",
+        industry: "Electronics",
+      }));
+      navigate("/dashboard");
+      return;
+    }
+
     if (!email || !password) {
       setError("Please enter both Email and Password");
       return;
@@ -49,7 +63,7 @@ export default function Login() {
             <div>
               <label className="block text-sm font-medium text-foreground mb-2">Email Address</label>
               <input
-                type="email"
+                type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white"
